@@ -8,6 +8,7 @@ import { serverError, notFound } from './middleware'
 import  {REDIS_OPTIONS, MONGO_URI, MONGO_OPTIONS, SESSION_OPTIONS} from './config'
 
 const app = express()
+mongoose.Promise = global.Promise;
 
 mongoose.connect(MONGO_URI, MONGO_OPTIONS)
 .then(() => { /** ready to use. The `mongoose.connect()` promise resolves to undefined. */ })

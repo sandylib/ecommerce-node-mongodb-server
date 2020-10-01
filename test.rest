@@ -2,3 +2,39 @@
 #
 GET http://localhost:8088/api/v1/user/profile
 
+###
+
+POST  http://localhost:8088/api/v1/user/register
+Content-Type: application/json
+
+{
+  "email": "sandy@gmail.com",
+  "name": "test4",
+  "password": "Secret12356",
+  "passwordConfirmation": "Secret12356"
+}
+
+###
+
+POST  http://localhost:8088/api/v1/user/login
+Content-Type: application/json
+
+{
+  "email": "sandy4444@gmail.com",
+  "password": "Secret12356"
+}
+
+###
+
+POST  http://localhost:8088/api/v1/user/logout
+Content-Type: application/json
+
+{
+   "email": "sandy44@gmail.com",
+  "password": "Secret1235"
+}
+
+
+
+
+
