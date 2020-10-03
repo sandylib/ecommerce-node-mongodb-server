@@ -4,7 +4,9 @@
   "description": "```sh docker exec -it node-au_db_1 mongo  -u admin -p secret auth",
   "main": "index.js",
   "scripts": {
-    "start": "nodemon -r esm -r dotenv/config src"
+    "start": "nodemon -r esm -r dotenv/config src",
+    "up": "mkdir -p data && docker-compose up -d"
+    
   },
   "directories": {
     "src": "src"
