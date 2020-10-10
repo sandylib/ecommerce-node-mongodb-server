@@ -34,6 +34,10 @@ Content-Type: application/json
   "password": "Secret1235"
 }
 
+###
+
+GET http://localhost:8088/api/v1/zodiac/
+
 
 
 
