@@ -5,8 +5,10 @@
   "main": "index.js",
   "scripts": {
     "start": "nodemon -r esm -r dotenv/config src",
-    "up": "mkdir -p data && docker-compose up -d"
-    
+    "up": "mkdir -p data && docker-compose up -d",
+    "pact:providerTests:graphql": "node ./pact/provider_tests_graphql.js",
+    "test:pact:graphql": "start-server-and-test start http://localhost:3000 pact:providerTests:graphql",
+    "test": "jest --coverage"
   },
   "directories": {
     "src": "src"
@@ -20,18 +22,38 @@
   "keywords": [],
   "author": "Sandy Zhang",
   "license": "MIT",
+  "jest": {
+    "testEnvironment": "node",
+    "coveragePathIgnorePatterns": [
+      "/node_modules/"
+    ]
+  },
   "dependencies": {
+    "@babel/core": "^7.11.6",
+    "@babel/plugin-transform-runtime": "^7.11.5",
+    "@babel/preset-env": "^7.11.5",
     "@hapi/joi": "^17.1.1",
+    "babel-jest": "^26.6.1",
     "bcrypt-nodejs": "0.0.3",
     "bcryptjs": "^2.4.3",
     "boom": "^7.3.0",
+    "chai": "^4.2.0",
+    "chai-http": "^4.3.0",
     "connect-redis": "^5.0.0",
+    "cors": "^2.8.5",
     "dotenv": "^8.2.0",
     "esm": "^3.2.25",
     "express": "^4.17.1",
+    "express-graphql": "^0.11.0",
     "express-session": "^1.17.1",
+    "graphql": "^15.3.0",
     "ioredis": "^4.17.3",
+    "jest": "^26.6.1",
     "mongoose": "^5.10.7",
     "nodemon": "^2.0.4"
+  },
+  "devDependencies": {
+    "@pact-foundation/pact": "7.0.3",
+    "start-server-and-test": "^1.7.5"
   }
 }

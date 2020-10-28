@@ -3,10 +3,11 @@ import mongoose from 'mongoose'
 import session from 'express-session'
 import Redis from 'ioredis'
 import connectRedis from 'connect-redis'
+import  cors  from 'cors'
 import routes from './routes'
 import { serverError, notFound } from './middleware'
 import  {REDIS_OPTIONS, MONGO_URI, MONGO_OPTIONS, SESSION_OPTIONS} from './config'
-
+import graphqlRouter from './routes/graphql'
 const app = express()
 mongoose.Promise = global.Promise;
 
@@ -30,8 +31,9 @@ app.use(
 )
 
 app.use(express.json())
-
+app.use(cors())
 app.use('/api/v1', routes)
+app.use('/graphql', graphqlRouter)
 
 app.use(notFound);
 app.use(serverError);
